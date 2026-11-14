@@ -1,11 +1,13 @@
-//leetcode 546 => https://leetcode.com/problems/01-matrix/description/
+// leetcode 546 => https://leetcode.com/problems/01-matrix/description/
 
 #include <bits/stdc++.h>
+#include <iostream>
 #include <queue>
 #include <utility>
-#include<algorithm>
+#include <algorithm>
 using namespace std;
-class Solution {
+class Solution
+{
 public:
     vector<pair<int, int>> d = {{1, 0}, {-1, 0}, {0, 1}, {0, -1}};
 
@@ -15,7 +17,6 @@ public:
 
     //     queue<pair<int, int>> qu;
 
-       
     //     qu.push({r, c});
     //     visited[r][c]=true;
 
@@ -55,13 +56,12 @@ public:
 
     //     return dis;
     // }
-    vector<vector<int>> updateMatrix(vector<vector<int>>& mat) {
+    vector<vector<int>> updateMatrix(vector<vector<int>> &mat)
+    {
         int rows = mat.size();
         int cols = mat[0].size();
 
-         vector<vector<int>> ans(rows, vector<int>(cols, -1));
-
-        
+        vector<vector<int>> ans(rows, vector<int>(cols, -1));
 
         // brute force
 
@@ -74,28 +74,38 @@ public:
         //     }
         // }
 
-        // multi source bfs 
-        queue<pair<int,int>> qu;
-        for(int i=0;i<rows;i++){
-            for(int j=0;j<cols;j++){
-                if(mat[i][j]==0) {
-                    ans[i][j]=0;
-                    qu.push({i,j});
+        // multi source bfs
+        queue<pair<int, int>> qu;
+        for (int i = 0; i < rows; i++)
+        {
+            for (int j = 0; j < cols; j++)
+            {
+                if (mat[i][j] == 0)
+                {
+                    ans[i][j] = 0;
+                    qu.push({i, j});
                 }
             }
         }
 
-        while(!qu.empty()){
-            auto [r,c] = qu.front();
+        while (!qu.empty())
+        {
+            auto curr = qu.front();
+            int r = curr.first, c = curr.second;
             qu.pop();
 
-            for(auto [dr,dc]:d){
-                int nr = dr+r;
-                int nc = dc+c;
-                if(nr<0 || nc<0 || nr>=rows || nc>=cols) continue;
-                if(ans[nr][nc]!=-1) continue;
-                if(ans[nr][nc]==-1) ans[nr][nc] = ans[r][c]+1;
-                qu.push({nr,nc});
+            for (auto ele : d)
+            {
+                int dr = ele.first, dc = ele.second;
+                int nr = dr + r;
+                int nc = dc + c;
+                if (nr < 0 || nc < 0 || nr >= rows || nc >= cols)
+                    continue;
+                if (ans[nr][nc] != -1)
+                    continue;
+                if (ans[nr][nc] == -1)
+                    ans[nr][nc] = ans[r][c] + 1;
+                qu.push({nr, nc});
             }
         }
 

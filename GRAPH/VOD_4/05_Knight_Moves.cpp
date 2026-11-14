@@ -1,4 +1,13 @@
 //leetcode 1197 
+/*Problem Statement
+In an infinite chessboard with coordinates ranging from negative infinity to positive infinity, you have a knight at square (0, 0).
+
+A knight has 8 possible moves. Each move consists of moving two squares in one direction and one square perpendicular to that direction
+
+Return the minimum number of steps needed to move the knight to the square (x, y).
+
+It is guaranteed that there is a unique answer.
+*/
 
 #include<bits/stdc++.h>
 using namespace std;
