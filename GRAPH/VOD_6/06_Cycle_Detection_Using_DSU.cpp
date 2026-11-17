@@ -37,7 +37,7 @@ int main()
 {
     // m-queries, n-elements
     int m, n;
-    cin >> n >> m;
+    cin >> n >> m; // m = number of edges and n = number of vertices
 
     vector<int> parent(n + 1);
     vector<int> rank(n + 1, 0);
@@ -49,7 +49,7 @@ int main()
 
     while (m--)
     {
-        int a, b;
+        int a, b; // it is basically a edge 
         cin >> a >> b;
         bool isCycle  = Union(rank, parent, a, b);
         if (isCycle ==true) cout<<"Cycle Detected";
