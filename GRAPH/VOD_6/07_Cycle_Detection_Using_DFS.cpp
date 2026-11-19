@@ -23,7 +23,7 @@ void cycleDFS(int src, int parent, unordered_set<int> & visited, bool &cycleExis
         if(visited.count(neighbour)) {
             cycleExist = true;
             return;
-        };
+        }
         if(not visited.count(neighbour)){
             visited.insert(neighbour);
             cycleDFS(neighbour,src,visited, cycleExist);
